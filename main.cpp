@@ -63,20 +63,21 @@ int main(int argc, char* argv[]){
     setTextCharacter(&text, fileSize, fileDesc);
 
     String* arrOfStr = (String*) calloc(text.numLines, sizeof(String));
+    assert(arrOfStr);
+    assert(text.arrOfStrPtr != NULL);
     fillArrOfStr(arrOfStr, text.arrOfStrPtr, text.numLines);
     //printSizes(arrOfStr, text.numLines);
 
     FILE* filePtr = fopen("oneginSort.txt", "w");
     assert(filePtr != NULL);
 
-    assert(text.arrOfStrPtr != NULL);
-    qSort(arrOfStr, text.numLines, sizeof(String), wordsComparatorUpNew);
+    qSort(arrOfStr, text.numLines, sizeof(arrOfStr[0]), wordsComparatorUpNew);
     printLinesInFile(filePtr, arrOfStr, text.numLines);
 
-    qsort(arrOfStr, text.numLines, sizeof(String), wordsComparatorUpReverseNew);
+    qsort(arrOfStr, text.numLines, sizeof(arrOfStr[0]), wordsComparatorUpReverseNew);
     printLinesInFile(filePtr, arrOfStr, text.numLines);
 
-    qsort(arrOfStr, text.numLines, sizeof(String), comparatorPtrOfStrUp);
+    qsort(arrOfStr, text.numLines, sizeof(arrOfStr[0]), comparatorPtrOfStrUp);
     printLinesInFile(filePtr, arrOfStr, text.numLines);
 
     free(arrOfStr);
