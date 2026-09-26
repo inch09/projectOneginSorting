@@ -22,7 +22,6 @@ size_t getfileSize(const char* fileName);
 void setTextCharacter(Text* text, size_t fileSize, int fileDesc);
 void fillArrOfStr(String* arrOfStr, char** arrOfStrPtr, size_t numLines);
 
-
 size_t countNumLines(char* text, size_t realSizeText);
 void convertTextIntoArrOfStrPtr(char* text, char** arrOfStrPtr, size_t realSizeText, size_t numLines);
 
